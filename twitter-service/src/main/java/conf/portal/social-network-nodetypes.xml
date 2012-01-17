@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Node type generation prototype -->
+<nodeTypes xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:soc="soc">
+    <nodeType name="plf:userSocialNetworkPreferences" isMixin="false" hasOrderableChildNodes="false">
+        <supertypes>
+            <supertype>nt:base</supertype>
+            <supertype>nt:hierarchyNode</supertype>
+            <supertype>mix:referenceable</supertype>
+        </supertypes>
+        <propertyDefinitions>
+            <propertyDefinition name="plf:networkName" requiredType="String" autoCreated="false" mandatory="true" onParentVersion="COPY" protected="false" multiple="false"  />
+            <propertyDefinition name="plf:userName" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false"  />
+            <propertyDefinition name="plf:userId" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false"  />
+            <propertyDefinition name="plf:token" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false"  />
+            <propertyDefinition name="plf:tokenSecret" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false"  />
+        </propertyDefinitions>
+        <childNodeDefinitions/>
+    </nodeType>
+
+
+    <nodeType name="plf:socialNetworkApplication" isMixin="false" hasOrderableChildNodes="false">
+        <supertypes>
+            <supertype>nt:base</supertype>
+            <supertype>nt:hierarchyNode</supertype>
+            <supertype>mix:referenceable</supertype>
+        </supertypes>
+        <propertyDefinitions>
+            <propertyDefinition name="plf:networkName" requiredType="String" autoCreated="false" mandatory="true" onParentVersion="COPY" protected="false" multiple="false"  />
+            <propertyDefinition name="plf:consumerKey" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false"  />
+            <propertyDefinition name="plf:secretKey" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false"  />
+        </propertyDefinitions>
+        <childNodeDefinitions/>
+    </nodeType>
+
+
+</nodeTypes>

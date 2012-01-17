@@ -1,0 +1,151 @@
+
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.exoplatform.extensions</groupId>
+        <artifactId>platform.twitter.parent</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <groupId>org.exoplatform.extensions</groupId>
+    <artifactId>twitter.service</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <url>http://www.exoplatform.org</url>
+    <name>eXo Platform Extension Twitter API</name>
+    <description>eXo Platform twitter API</description>
+	
+	
+    <repositories>
+        <repository>
+            <id>twitter4j.org</id>
+            <name>twitter4j.org Repository</name>
+            <url>http://twitter4j.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.twitter4j</groupId>
+            <artifactId>twitter4j-core</artifactId>
+            <scope>provided</scope>
+            <version>[2.2,)</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.exoplatform.social</groupId>
+            <artifactId>exo.social.component.core</artifactId>
+            <scope>provided</scope>
+            <version>${org.exoplatform.social.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.exoplatform.social</groupId>
+            <artifactId>exo.social.component.service</artifactId>
+            <scope>provided</scope>
+            <version>${org.exoplatform.social.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.exoplatform.commons</groupId>
+            <artifactId>exo.platform.commons.component.product</artifactId>
+            <version>${org.exoplatform.commons.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.exoplatform.kernel</groupId>
+            <artifactId>exo.kernel.container</artifactId>
+            <version>${org.exoplatform.kernel.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.chromattic</groupId>
+            <artifactId>chromattic.ext</artifactId>
+            <version>${org.chromattic.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.chromattic</groupId>
+            <artifactId>chromattic.core</artifactId>
+            <version>${org.chromattic.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        
+        <dependency>
+            <groupId>org.exoplatform.portal</groupId>
+            <artifactId>exo.portal.component.common</artifactId>
+            <version>${org.exoplatform.portal.version}</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>        
+        
+
+      <!--  Shindig -->
+        <dependency>
+            <groupId>org.gatein.shindig</groupId>
+            <artifactId>shindig-gadgets</artifactId>
+            <version>${org.shindig.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.gatein.shindig</groupId>
+            <artifactId>shindig-features</artifactId>
+            <version>${org.shindig.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.gatein.shindig</groupId>
+            <artifactId>shindig-common</artifactId>
+            <version>${org.shindig.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.gatein.shindig</groupId>
+            <artifactId>shindig-social-api</artifactId>
+            <version>${org.shindig.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <outputDirectory>target/classes</outputDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.gtmpl</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+        </plugins>        
+    </build>
+</project>
+

@@ -1,0 +1,128 @@
+
+<configuration
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
+   xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
+       
+
+    <component>
+        <type>org.exoplatform.extensions.social.network.model.SocialNetworkIntegration</type>
+    </component>
+    <component>
+        <type>org.exoplatform.extensions.twitter.services.TwitterService</type>
+    </component>
+    <component>
+        <type>org.exoplatform.extensions.twitter.services.TwitterServiceRestInterface</type>
+    </component> 
+    <external-component-plugins>
+        <target-component>org.exoplatform.social.core.manager.ActivityManager</target-component>
+
+        <component-plugin>
+            <name>TwitterActivityProcessor</name>
+            <set-method>addProcessorPlugin</set-method>
+            <type>org.exoplatform.extensions.twitter.services.TwitterActivityProcessor</type>
+            <description/>
+            <init-params>
+                <value-param>
+                    <name>priority</name>
+                    <description>priority of this processor (lower are executed first)</description>
+                    <value>2</value>
+                </value-param>
+            </init-params>
+        </component-plugin>  
+    </external-component-plugins>
+
+    <external-component-plugins profiles="all,default,social">
+        <target-component>org.exoplatform.commons.chromattic.ChromatticManager</target-component>
+        <component-plugin>
+            <name>chromattic</name>
+            <set-method>addLifeCycle</set-method>
+            <type>org.exoplatform.commons.chromattic.ChromatticLifeCycle</type>
+            <init-params>
+                <value-param>
+                    <name>domain-name</name>
+                    <value>socialnetworkconfiguration</value>
+                </value-param>
+                <value-param>
+                    <name>workspace-name</name>
+                    <value>collaboration</value>
+                </value-param>
+                <values-param>
+                    <name>entities</name>
+                    <value>org.chromattic.ext.ntdef.NTFile</value>
+                    <value>org.chromattic.ext.ntdef.NTFolder</value>
+                    <value>org.chromattic.ext.ntdef.NTResource</value>
+                    <value>org.exoplatform.extensions.social.network.model.UserSocialNetworkPreferences</value>
+                </values-param>
+                <properties-param>
+                    <name>options</name>
+                    <property name="org.chromattic.api.Option.root_node.path" value="/"/>
+                    <property name="org.chromattic.api.Option.root_node.create" value="true"/>
+                </properties-param>
+            </init-params>
+        </component-plugin>
+    </external-component-plugins>
+
+
+    <external-component-plugins profiles="all,default,social">
+        <target-component>org.exoplatform.services.jcr.RepositoryService</target-component>
+        <component-plugin>
+            <name>add.space.access.nodeType</name>
+            <set-method>addPlugin</set-method>
+            <type>org.exoplatform.services.jcr.impl.AddNodeTypePlugin</type>
+            <init-params>
+                <values-param>
+                    <name>autoCreatedInNewRepository</name>
+                    <description>Node types configuration file</description>
+                    <value>jar:/conf/portal/social-network-nodetypes.xml</value>
+                </values-param>
+            </init-params>
+        </component-plugin>
+    </external-component-plugins>
+
+
+    <external-component-plugins>
+        <target-component>org.exoplatform.services.jcr.impl.ext.action.SessionActionCatalog</target-component>
+        <component-plugin>
+            <name>addActions</name>
+            <set-method>addPlugin</set-method>
+            <type>org.exoplatform.services.jcr.impl.ext.action.AddActionsPlugin</type>
+            <description>Execute Action After Creation of an activity (Should be generic)</description>
+            <init-params>
+                <object-param>
+                    <name>actions</name>
+                    <object type="org.exoplatform.services.jcr.impl.ext.action.AddActionsPlugin$ActionsConfig">
+                        <field name="actions">
+                            <collection type="java.util.ArrayList">
+                                <value>
+                                    <object type="org.exoplatform.services.jcr.impl.ext.action.ActionConfiguration">
+                                        <field name="workspace">
+                                            <string>social</string>
+                                        </field>
+                                        <field name="path">
+                                            <string>/</string>
+                                        </field>
+                                        <field name="isDeep">
+                                            <boolean>true</boolean>
+                                        </field>
+                                        <field name="nodeTypes">
+                                            <string>soc:activity</string>
+                                        </field>
+                                        <field name="eventTypes">
+                                            <string>addProperty</string>
+                                        </field>
+                                        <field name="actionClassName">
+                                            <string>org.exoplatform.extensions.twitter.services.TwitterAction</string>
+                                        </field>
+                                    </object>
+                                </value>
+                            </collection>
+                        </field>
+                    </object>
+                </object-param>
+            </init-params>
+        </component-plugin>
+    </external-component-plugins>
+
+
+</configuration>
