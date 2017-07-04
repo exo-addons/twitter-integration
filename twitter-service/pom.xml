@@ -14,8 +14,8 @@
     <url>http://www.exoplatform.org</url>
     <name>eXo Platform Extension Twitter API</name>
     <description>eXo Platform twitter API</description>
-	
-	
+
+    <!-- Add a comment to test merge process -->
     <repositories>
         <repository>
             <id>twitter4j.org</id>
