@@ -6,7 +6,7 @@
   <version>1.0</version>
   <packaging>pom</packaging>
   <name>eXo Platform Extension: Twitter Integration</name>
-
+  <!-- Add a comment to test merge process -->
 
   <properties>
     <jdk.min.version>1.6</jdk.min.version>
